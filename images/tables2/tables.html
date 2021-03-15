@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap.css">
+    <style>
+        table {
+            font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container col-md-12">
+
+    <p></p>
+
+    <table class="table table-bordered table-sm">
+        <tr>
+            <td>
+            </td>
+            <td><em>Function</em>
+                <p>
+                    (takes one argument and returns a result)
+            </td>
+            <td><em>Consumer</em>
+                <p>
+                    (takes one argument and returns no result)
+            </td>
+            <td><em>Runnable</em>
+                <p>
+                    (takes no argument and returns no result)
+            </td>
+        </tr>
+        <tr>
+            <td>then
+            </td>
+            <td><em>thenApply, thenCompose</em>
+            </td>
+            <td><em>thenAccept</em>
+            </td>
+            <td><em>thenRun</em>
+            </td>
+        </tr>
+        <tr>
+            <td>either
+            </td>
+            <td><em>applyToEither</em>
+            </td>
+            <td><em>acceptEither</em>
+            </td>
+            <td><em>runAfterEither</em>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td><em>BiFunction</em>
+                <p>
+                    (takes two arguments and returns a result)
+            </td>
+            <td><em>BiConsumer</em>
+                <p>
+                    (takes two arguments and returns no result)
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>both
+            </td>
+            <td><em>thenCombine</em>
+            </td>
+            <td><em>thenAcceptBoth</em>
+            </td>
+            <td><em>runAfterBoth</em>
+            </td>
+        </tr>
+    </table>
+
+    <p></p>
+
+    <table class="table table-bordered table-sm">
+        <tr>
+            <td>When the method is called
+            </td>
+            <td>What the method returns
+            </td>
+            <td>Method
+            </td>
+            <td>Description
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2">called on success or exception
+            </td>
+            <td>the same result or exception
+            </td>
+            <td><em>whenComplete(biConsumer)</em>
+            </td>
+            <td>returns a new <em>CompletionStage</em> that upon <em>normal or exceptional</em> completion consumes the
+                result or exception of this stage and returns <em>the same result or exception without modifying
+                    them</em>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2">a new result
+            </td>
+            <td><em>handle(biFunction)</em>
+            </td>
+            <td>returns a new <em>CompletionStage</em> that upon <em>normal or exceptional</em> completion transforms
+                the result or exception of this stage and returns <em>the new result</em>
+            </td>
+        </tr>
+        <tr>
+            <td>called on exception
+            </td>
+            <td><em>exceptionally(function)</em>
+            </td>
+            <td>returns a new <em>CompletionStage</em> that upon <em>exceptional</em> completion transforms the
+                exception of this stage and returns <em>the new result</em>
+            </td>
+        </tr>
+    </table>
+
+    <p></p>
+
+    <table class="table table-bordered table-sm">
+        <tr>
+            <td>Future status
+            </td>
+            <td>Method
+            </td>
+            <td>Description
+            </td>
+        </tr>
+        <tr>
+            <td>incomplete
+            </td>
+            <td><em>newIncompleteFuture()</em>
+            </td>
+            <td>returns a new incomplete <em>CompletableFuture</em>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2">asynchronously completing
+            </td>
+            <td><em>supplyAsync(supplier)</em>
+            </td>
+            <td>returns a new <em>CompletableFuture</em> that is asynchronously completed after it obtains a value from
+                the given <em>Supplier</em>
+            </td>
+        </tr>
+        <tr>
+            <td><em>runAsync(runnable)</em>
+            </td>
+            <td>returns a new <em>CompletableFuture</em> of that is asynchronously completed after it runs an action
+                from the given <em>Runnable</em>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2">completed
+            </td>
+            <td><em>completedFuture(value)​</em>
+            </td>
+            <td>returns a new <em>CompletableFuture</em> that is already completed with the given value
+            </td>
+        </tr>
+        <tr>
+            <td><em>failedFuture(throwable)</em>
+            </td>
+            <td>returns a new <em>CompletableFuture</em> that is already completed exceptionally with the given
+                exception
+            </td>
+        </tr>
+    </table>
+
+    <p></p>
+
+    <table class="table table-bordered table-sm">
+        <tr>
+            <td>Behavior
+            </td>
+            <td>Method
+            </td>
+            <td>Description
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="3">non-blocking
+            </td>
+            <td><em>isDone</em>
+            </td>
+            <td>returns true if the <em>CompletableFuture</em> is completed in any manner: normally, exceptionally, or
+                by cancellation
+            </td>
+        </tr>
+        <tr>
+            <td><em>isCompletedExceptionally</em>
+            </td>
+            <td>returns true if this <em>CompletableFuture</em> is completed exceptionally, including cancellation
+            </td>
+        </tr>
+        <tr>
+            <td><em>isCancelled</em>
+            </td>
+            <td>returns true if this <em>CompletableFuture</em> is canceled <em>before it completed normally</em>
+            </td>
+        </tr>
+    </table>
+
+    <p></p>
+
+    <table class="table table-bordered table-sm">
+        <tr>
+            <td>Future action
+            </td>
+            <td>Execution
+            </td>
+            <td>Method
+            </td>
+            <td>Description
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="3">complete normally
+            </td>
+            <td>synchronous
+            </td>
+            <td><em>complete(value)</em>
+            </td>
+            <td>completes this <em>CompletableFuture</em> with the given value if not already completed
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="3">asynchronous
+            </td>
+            <td><em>completeAsync(supplier)​</em>
+            </td>
+            <td>completes this <em>CompletableFuture</em> with the result of the given <em>Supplier</em>
+            </td>
+        </tr>
+        <tr>
+            <td><em>completeOnTimeout(value, timeout, timeUnit)</em>
+            </td>
+            <td>completes this <em>CompletableFuture</em> with the given value if not already completed before the given
+                timeout
+            </td>
+        </tr>
+        <tr>
+            <td>complete normally or exceptionally depends on timeout
+            </td>
+            <td><em>orTimeout(timeout, timeUnit)</em>
+            </td>
+            <td>exceptionally completes this <em>CompletableFuture</em> with a <em>TimeoutException</em> if not already
+                completed before the given timeout
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2">complete exceptionally
+            </td>
+            <td rowspan="2">synchronous
+            </td>
+            <td><em>completeExceptionally(throwable)</em>
+            </td>
+            <td>completes this <em>CompletableFuture</em> with the given exception if not already completed
+            </td>
+        </tr>
+        <tr>
+            <td><em>cancel(mayInterruptIfRunning)</em>
+            </td>
+            <td>completes this <em>CompletableFuture</em> with a <em>CancellationException</em>, if not already
+                completed
+            </td>
+        </tr>
+    </table>
+
+    <p></p>
+
+    <table class="table table-bordered table-sm">
+        <tr>
+            <td>Behavior
+            </td>
+            <td>Thrown exceptions
+            </td>
+            <td>Method
+            </td>
+            <td>Description
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2">blocking
+            </td>
+            <td>throws checked and unchecked exceptions
+            </td>
+            <td><em>get()</em>
+            </td>
+            <td>returns the result value when complete (waits if necessary) or throws an exception if completed
+                exceptionally
+            </td>
+        </tr>
+        <tr>
+            <td>throws <em>only</em> unchecked exceptions
+            </td>
+            <td><em>join()</em>
+            </td>
+            <td>returns the result value when complete (waits if necessary) or throws an <em>unchecked</em> if completed
+                exceptionally
+            </td>
+        </tr>
+        <tr>
+            <td>time-blocking
+            </td>
+            <td>throws checked and unchecked exceptions
+            </td>
+            <td><em>get(timeout, timeUnit)</em>
+            </td>
+            <td>returns the result value when complete (waits for at most the given time) or throws an exception if
+                completed exceptionally
+            </td>
+        </tr>
+        <tr>
+            <td>non-blocking
+            </td>
+            <td>throws <em>only</em> unchecked exceptions
+            </td>
+            <td><em>getNow(valueIfAbsent)</em>
+            </td>
+            <td>returns the result value (or throws an <em>unchecked</em> exception if completed exceptionally) if
+                completed, else returns the given <em>valueIfAbsent</em>
+            </td>
+        </tr>
+    </table>
+
+    <p></p>
+
+    <table class="table table-bordered table-sm">
+        <tr>
+            <td>Similarity
+            </td>
+            <td>Method
+            </td>
+            <td>Description
+            </td>
+        </tr>
+        <tr>
+            <td>similar to <em>runAfterBoth</em>
+            </td>
+            <td><em>allOf(completableFuture..)</em>
+            </td>
+            <td>returns a new <em>CompletableFuture&lt;Void></em> that is completed when <em>all</em> of the given <em>CompletableFuture</em>s
+                complete
+            </td>
+        </tr>
+        <tr>
+            <td>similar to <em>applyToEither</em>
+            </td>
+            <td><em>anyOf(completableFuture..)</em>
+            </td>
+            <td>returns a new <em>CompletableFuture&lt;Object></em> that is completed when <em>any</em> of the given
+                <em>CompletableFuture</em>s complete, with the same result
+            </td>
+        </tr>
+    </table>
+
+    <p></p>
+
+</div>
+</body>
+</html>
